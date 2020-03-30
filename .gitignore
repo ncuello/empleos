@@ -1,0 +1,15 @@
+.metadata/
+.settings/
+.recommenders/
+RemoteSystemsTempFiles/
+*/build/
+*/bin/
+*/.svn/
+*/.settings/
+*/\.project
+*/\.gradle/
+*/\.classpath
+*/\.project
+.project
+.classpath
+target/
