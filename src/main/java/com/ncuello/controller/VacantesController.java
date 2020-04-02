@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ncuello.model.Categoria;
 import com.ncuello.model.Vacante;
+import com.ncuello.service.ICategoriasService;
 import com.ncuello.service.IVacantesService;
 
 @Controller
@@ -28,6 +30,9 @@ public class VacantesController {
 	
 	@Autowired
 	private IVacantesService service;
+	
+	@Autowired
+	private ICategoriasService serviceCategorias;
 	
 	@GetMapping("/index")
 	public String mostrarIndex(Model model) {
@@ -41,7 +46,9 @@ public class VacantesController {
 	}
 	
 	@GetMapping("/create")
-	public String crear(Vacante vacante) {
+	public String crear(Vacante vacante, Model model) {
+		List<Categoria> categorias = serviceCategorias.buscarTodas();
+		model.addAttribute("categorias", categorias);
 		return "vacantes/formVacante";
 	}
 	
